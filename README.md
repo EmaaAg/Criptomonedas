@@ -1,2 +1,2 @@
 # Criptomonedas
- Trábajo practico de Paradigmas de Programación
+ Trabajo Práctico de Paradigmas de Programación
