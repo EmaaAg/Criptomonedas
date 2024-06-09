@@ -21,45 +21,45 @@ public class Menu {
 		Archivo archivo = new Archivo("usuarios.txt");
 		archivo.cargarArchivo(admin, traders);
 		
-		for (Administrador administrador : admin) {
-			System.out.println(administrador);
-		}
+//		for (Administrador administrador : admin) {
+//			System.out.println(administrador);
+//		}
 		for (Trader trader : traders) {
-			System.out.println(trader);
-			
+			System.out.println(trader);			
 		}
 		
-//		System.out.println("Ingrese su nombre");
-//		nombre = sc.nextLine();
-//		
-//		//Buscar en la lista de Traders y Admins
-//		if(criptomonedas.Administrador.buscarAdmin(nombre)) {
-//			menuAdmin();
-//		}
-//		
-//		if(criptomonedas.Trader.buscarTrader(nombre)) {
-//			menuTrader();
-//		}
-//		else
-//		{
-//			//crearTrader
-//			List<Trader> t = new ArrayList<Trader>();
-//			
-//			System.out.println("Ingrese Numero de cuenta bancaria: ");
-//			String numeroDeCuenta = sc.nextLine();
-//			
-//			System.out.println("Ingrese nuemero de Banco: ");
-//			String nombreDeBanco = sc.nextLine();
-//			
-//			System.out.println("Ingrese Saldo Actual: "); ///verificar saldo
-//			Double saldo = sc.nextDouble();
-//			
-//			Trader tra = new Trader(nombre, numeroDeCuenta, nombreDeBanco, saldo);
-//			
-//			t.add(tra);
-//			
-//			
-//		}
+		System.out.println("Ingrese su nombre");
+		nombre = sc.nextLine();
+		
+		//Buscar en la lista de Traders y Admins
+		if(criptomonedas.Administrador.buscarAdmin(nombre, admin)) {
+			menuAdmin();
+		}
+		
+		if(criptomonedas.Trader.buscarTrader(nombre, traders)) {
+			menuTrader();
+		}
+		else
+		{
+			//crearTrader
+			
+			System.out.println("Ingrese Numero de cuenta bancaria: ");
+			String numeroDeCuenta = sc.nextLine();
+			
+			System.out.println("Ingrese nuemero de Banco: ");
+			String nombreDeBanco = sc.nextLine();
+			
+			System.out.println("Ingrese Saldo Actual: "); ///verificar saldo
+			Double saldo = sc.nextDouble();
+			
+			Trader tra = new Trader(nombre, numeroDeCuenta, nombreDeBanco, saldo);
+			
+			traders.add(tra);			
+		}
+		
+		for (Trader trader : traders) {
+			System.out.println(trader);			
+		}
 		
 		//Si no esta en ninguna crear un nuevo trader
 		sc.close();

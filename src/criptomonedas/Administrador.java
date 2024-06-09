@@ -4,7 +4,6 @@ import java.util.List;
 
 public class Administrador extends Usuario{
 	private String perfil;
-    private static List<Administrador> administradores;
 	
 	
 	public Administrador(String nombre, String perfil) {
@@ -13,13 +12,7 @@ public class Administrador extends Usuario{
 	}
 	
 
-	public List<Administrador> getAdministradores() {
-		return administradores;
-	}
 
-	public void setAdministradores(List<Administrador> administradores) {
-		this.administradores = administradores;
-	}
 
 	public String getPerfil() {
 		return perfil;
@@ -37,9 +30,9 @@ public class Administrador extends Usuario{
 		return false;
 	}
 	
-	public static boolean buscarAdmin(String nombre) {
+	public static boolean buscarAdmin(String nombre, List<Administrador> administradores) {
 		for (Administrador administrador : administradores) {
-			if(administrador.getNombre() == nombre) {
+			if(administrador.getNombre().equals(nombre)) {
 				return true;
 			}
 		}

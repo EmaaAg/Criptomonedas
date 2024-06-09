@@ -7,7 +7,6 @@ public class Trader extends Usuario{
 	private String nombreDeBanco;
 	private Double saldoActual;
 	
-    private static List<Trader> traders;
 
 
     public Trader(String nombre, String numeroDeCuenta, String nombreDeBanco, Double saldoActual) {
@@ -17,12 +16,21 @@ public class Trader extends Usuario{
 		this.saldoActual = saldoActual;
 	}
     
-	public Trader(String nombre, String numeroDeCuenta, String nombreDeBanco, Double saldoActual, List<Trader> traders) {
-		super(nombre);
-		this.numeroDeCuenta = numeroDeCuenta;
-		this.nombreDeBanco = nombreDeBanco;
-		this.saldoActual = saldoActual;
-		this.traders = traders;
+//	public Trader(String nombre, String numeroDeCuenta, String nombreDeBanco, Double saldoActual, List<Trader> traders) {
+//		super(nombre);
+//		this.numeroDeCuenta = numeroDeCuenta;
+//		this.nombreDeBanco = nombreDeBanco;
+//		this.saldoActual = saldoActual;
+//		this.traders = traders;
+//	}
+	
+	
+	public static List<Trader> getTraders() {
+		return traders;
+	}
+
+	public static void setTraders(List<Trader> traders) {
+		Trader.traders = traders;
 	}
 
 	public String getNumeroDeCuenta() {
@@ -57,9 +65,9 @@ public class Trader extends Usuario{
 		return false;
 	}
 	
-	public static boolean buscarTrader(String nombre) {
+	public static boolean buscarTrader(String nombre, List<Trader> traders) {
 		for (Trader trader : traders) {
-			if(trader.getNombre() == nombre) {
+			if(trader.getNombre().equals(nombre)) {
 				return true;
 			}
 		}
