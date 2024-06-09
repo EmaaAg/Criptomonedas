@@ -1,8 +1,69 @@
 package menu;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
+import archivos.Archivo;
+import criptomonedas.Administrador;
+import criptomonedas.Trader;
+
 public class Menu {
+	
+	public static void menu() {
+		List<Trader> traders = new ArrayList<Trader>();
+		List<Administrador> admin = new ArrayList<Administrador>();
+		
+		Scanner sc = new Scanner(System.in);
+		String nombre;
+		
+		
+		Archivo archivo = new Archivo("usuarios.txt");
+		archivo.cargarArchivo(admin, traders);
+		
+		for (Administrador administrador : admin) {
+			System.out.println(administrador);
+		}
+		for (Trader trader : traders) {
+			System.out.println(trader);
+			
+		}
+		
+//		System.out.println("Ingrese su nombre");
+//		nombre = sc.nextLine();
+//		
+//		//Buscar en la lista de Traders y Admins
+//		if(criptomonedas.Administrador.buscarAdmin(nombre)) {
+//			menuAdmin();
+//		}
+//		
+//		if(criptomonedas.Trader.buscarTrader(nombre)) {
+//			menuTrader();
+//		}
+//		else
+//		{
+//			//crearTrader
+//			List<Trader> t = new ArrayList<Trader>();
+//			
+//			System.out.println("Ingrese Numero de cuenta bancaria: ");
+//			String numeroDeCuenta = sc.nextLine();
+//			
+//			System.out.println("Ingrese nuemero de Banco: ");
+//			String nombreDeBanco = sc.nextLine();
+//			
+//			System.out.println("Ingrese Saldo Actual: "); ///verificar saldo
+//			Double saldo = sc.nextDouble();
+//			
+//			Trader tra = new Trader(nombre, numeroDeCuenta, nombreDeBanco, saldo);
+//			
+//			t.add(tra);
+//			
+//			
+//		}
+		
+		//Si no esta en ninguna crear un nuevo trader
+		sc.close();
+	}
 	
 	public static void menuAdmin() {
 		

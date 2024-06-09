@@ -3,7 +3,7 @@ package app;
 public class App {
 
 	public static void main(String[] args) {
-		menu.Menu.menuAdmin();
+		menu.Menu.menu();
 	}
 
 }

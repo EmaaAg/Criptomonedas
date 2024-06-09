@@ -1,8 +1,7 @@
 package criptomonedas;
 
 public abstract class Usuario {
-	private String nombre;
-	
+	private String nombre;	
 	
 
 	public Usuario(String nombre) {
@@ -17,7 +16,7 @@ public abstract class Usuario {
 		this.nombre = nombre;
 	}
 
-
+	public abstract boolean verificarUsuario();
 	
 	
 }
