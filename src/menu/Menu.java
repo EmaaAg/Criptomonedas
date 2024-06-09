@@ -18,7 +18,7 @@ public class Menu {
 		String nombre;
 		
 		
-		Archivo archivo = new Archivo("usuarios.txt");
+		Archivo archivo = new Archivo("usuarios.csv");
 		archivo.cargarArchivo(admin, traders);
 		
 //		for (Administrador administrador : admin) {

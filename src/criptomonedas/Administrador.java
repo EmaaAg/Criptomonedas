@@ -11,9 +11,6 @@ public class Administrador extends Usuario{
 		this.perfil = perfil;
 	}
 	
-
-
-
 	public String getPerfil() {
 		return perfil;
 	}
@@ -39,7 +36,6 @@ public class Administrador extends Usuario{
 				
 		return false;
 	}
-
 
 	@Override
 	public String toString() {

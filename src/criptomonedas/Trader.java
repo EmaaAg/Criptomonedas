@@ -25,14 +25,6 @@ public class Trader extends Usuario{
 //	}
 	
 	
-	public static List<Trader> getTraders() {
-		return traders;
-	}
-
-	public static void setTraders(List<Trader> traders) {
-		Trader.traders = traders;
-	}
-
 	public String getNumeroDeCuenta() {
 		return numeroDeCuenta;
 	}
