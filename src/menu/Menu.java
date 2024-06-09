@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Menu {
 	
-	public static void menu() {
+	public static void menuAdmin() {
 		
 		String mensaje = 
 				"1) Crear Criptomoneda.\n" +
