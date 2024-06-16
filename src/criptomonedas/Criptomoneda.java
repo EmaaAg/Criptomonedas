@@ -1,11 +1,11 @@
 package criptomonedas;
 
+import java.util.List;
+
 public class Criptomoneda {
 	private String nombre;
 	private String simbolo;
-	private Double precioBase;
-	
-	
+	private Double precioBase;	
 	
 	public Criptomoneda(String nombre, String simbolo, Double precioBase) {
 		this.nombre = nombre;
@@ -37,4 +37,18 @@ public class Criptomoneda {
 		this.precioBase = precioBase;
 	} 
 	
+	public static boolean buscarCriptomoneda(String nombre, List<Criptomoneda> criptomonedas) {
+		for (Criptomoneda administrador : criptomonedas) {
+			if(administrador.getNombre().equals(nombre)) {
+				return true;
+			}
+		}
+				
+		return false;
+	}
+	
+	@Override
+	public String toString() {
+		return "Nombre: [" + nombre + "]" + ", Simbolo: [" + simbolo + "], Precio Base: [" + precioBase + "]." ;
+	}
 }

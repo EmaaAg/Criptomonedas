@@ -1,11 +1,14 @@
 package menu;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
 import archivos.Archivo;
 import criptomonedas.Administrador;
+import criptomonedas.Criptomoneda;
+import criptomonedas.Mercado;
 import criptomonedas.Trader;
 
 public class Menu {
@@ -18,7 +21,7 @@ public class Menu {
 		String nombre;
 
 		Archivo archivo = new Archivo("usuarios.csv");
-		archivo.cargarArchivo(admin, traders);
+		archivo.cargarArchivoUsuarios(admin, traders);
 
 //		mostrarAdministradores(admin);
 		mostrarTraders(traders);
@@ -54,19 +57,39 @@ public class Menu {
 			System.out.println(administrador);
 		}
 	}
+	
+	public static void mostrarCriptomonedas(List<Criptomoneda> criptomonedas) {
+		for (Criptomoneda cripto: criptomonedas) {
+			System.out.println(cripto);
+		}
+	}
+	public static void mostrarMercado(List<Mercado> mercados) {
+		for(Mercado mercado : mercados) {
+			System.out.println(mercado);
+		}
+	}
 
 	public static void menuAdmin() {
+		
+		List<Criptomoneda> criptomonedas = new ArrayList<Criptomoneda>();
+		List<Mercado> mercados = new ArrayList<Mercado>();
 
 		String mensaje = "1) Crear Criptomoneda.\n" + "2) Modificar Criptomoneda.\n" + "3) Eliminar Criptomoneda.\n"
 				+ "4) Consultar Criptomoneda.\n" + "5) Consultar estado actual del mercado.\n" + "6) Salir.\n";
 		Scanner sc = new Scanner(System.in);
 		int opcion = obtenerOpcion(mensaje, 1, 6, sc);
-
+		
+		Archivo archivoCripto = new Archivo("criptomonedas.csv");
+		archivoCripto.cargarArchivoCriptomonedas(criptomonedas);
+		mostrarCriptomonedas(criptomonedas);
+		Archivo archivoMercado = new Archivo("mercados.csv");
+		archivoMercado.cargarArchivoMercado(mercados);
+		
 		switch (opcion) {
 		case 1:
 			// crearCriptomoneda();
 			System.out.println("Opción Crear Criptomoneda seleccionada.");
-			AdministracionAdministrador.crearCriptomoneda();
+			AdministracionAdministrador.crearCriptomoneda(criptomonedas, mercados);
 			break;
 		case 2:
 			// modificarCriptomoneda();
@@ -92,6 +115,7 @@ public class Menu {
 			System.out.println("Opción no válida.");
 			break;
 		}
+		mostrarCriptomonedas(criptomonedas);
 		sc.close();
 	}
 

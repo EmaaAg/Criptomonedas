@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Scanner;
 
 import criptomonedas.Administrador;
+import criptomonedas.Criptomoneda;
+import criptomonedas.Mercado;
 import criptomonedas.Trader;
 
 public class Archivo {
@@ -27,7 +29,7 @@ public class Archivo {
 		this.nombreArchivo = nombreArchivo;
 	}
 	
-    public void cargarArchivo(List<Administrador> administradores, List<Trader> traders) {
+    public void cargarArchivoUsuarios(List<Administrador> administradores, List<Trader> traders) {
         try (BufferedReader br = new BufferedReader(new FileReader(this.nombreArchivo))) {
             String linea;
             while ((linea = br.readLine()) != null) {
@@ -52,5 +54,44 @@ public class Archivo {
             e.printStackTrace();
         }
     }
+    public void cargarArchivoCriptomonedas(List<Criptomoneda> criptomonedas) {
+    	try (BufferedReader br = new BufferedReader(new FileReader(this.nombreArchivo))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                String[] partes = linea.split(", ");
+                String nombre = partes[0];                
+            	String simbolo = partes[1];
+            	Double precioBase = Double.parseDouble(partes[2]);
+            	
+            	Criptomoneda criptomoneda = new Criptomoneda(nombre, simbolo, precioBase);
+            	criptomonedas.add(criptomoneda);
+            	
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+    }
+
+	public void cargarArchivoMercado(List<Mercado> mercados) {
+		try (BufferedReader br = new BufferedReader(new FileReader(this.nombreArchivo))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                String[] partes = linea.split(", ");
+            	String simbolo = partes[0];
+            	Double capacidad = Double.parseDouble(partes[1].replace(",", "."));
+            	Double volumen = Double.parseDouble(partes[2].replace(",", ".").replace("%", ""));
+            	Double variacion = Double.parseDouble(partes[3].replace(",", ".").replace("%", "").replace("+", ""));
+
+            	Mercado mercado = new Mercado(simbolo, capacidad, volumen, variacion);
+            	mercados.add(mercado);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }		
+	}
 	
 }
