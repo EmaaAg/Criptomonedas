@@ -5,6 +5,14 @@ public class Criptomoneda {
 	private String simbolo;
 	private Double precioBase;
 	
+	
+	
+	public Criptomoneda(String nombre, String simbolo, Double precioBase) {
+		this.nombre = nombre;
+		this.simbolo = simbolo;
+		this.precioBase = precioBase;
+	}
+
 	public String getNombre() {
 		return nombre;
 	}

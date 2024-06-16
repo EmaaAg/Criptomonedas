@@ -41,7 +41,4 @@ public class Administrador extends Usuario{
 	public String toString() {
 		return "Nombre: " + getNombre() + " Perfil:" + perfil;
 	}
-	
-	
-	
 }

@@ -69,8 +69,8 @@ public class Trader extends Usuario{
 
 	@Override
 	public String toString() {
-		return "Nombre: "+ getNombre() + " Numero De Cuenta:" + numeroDeCuenta + ", Nombre De Banco: " + nombreDeBanco + ", saldoActual="
-				+ saldoActual + "]";
+		return "Nombre: "+ getNombre() + ", Numero De Cuenta:" + numeroDeCuenta + ", Nombre De Banco: " + nombreDeBanco + ", saldoActual="
+				+ saldoActual;
 	}
 	
 	
