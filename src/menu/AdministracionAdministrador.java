@@ -10,49 +10,68 @@ public class AdministracionAdministrador {
 	public static void administrador() {
 		
 	}
-	
-	
-	public static void crearCriptomoneda(List<Criptomoneda> criptomonedas, List<Mercado> mercados) {
-		String nombre;
-		String simbolo;
-		Double precioBase;
-		Scanner sc = new Scanner(System.in);
+	public static void eliminarCriptomoneda() {
 		
-		System.out.println("Ingrese Nombre de la Criptomoneda: ");
-		nombre = sc.nextLine();
-		
-		//Buscar si ya existe
-		if(Criptomoneda.buscarCriptomoneda(nombre, criptomonedas)) {
-			System.out.println("La criptomoneda ya existe, ¿Desea Modificar algun parámetro?. (S = si, N = no)"); // Si ya existe preguntar si la quiere modificar
-			String op = sc.nextLine();
-			if(op.equalsIgnoreCase("s")) {
-				modificarCriptomoneda();
-			}
-			else
-			{
-				//salir
-				sc.close();
-				return;
-			}
-		}
-		else
-		{
-			System.out.println("Ingrese Simbolo de la Criptomoneda: ");
-			simbolo = sc.nextLine().toUpperCase();
-			System.out.println("Ingrese Precio en Dolares de la Criptomoneda: ");
-			precioBase = sc.nextDouble();		
-			
-			Criptomoneda criptomoneda = new Criptomoneda(nombre, simbolo, precioBase);		
-			criptomonedas.add(criptomoneda);
-			
-			Mercado mercado = new Mercado(simbolo);
-			mercados.add(mercado);
-		}		
-		
-		sc.close();
 	}
 	
-	public static void modificarCriptomoneda(List<Criptomoneda> criptomonedas) {
+	public static void crearCriptomoneda(List<Criptomoneda> criptomonedas, List<Mercado> mercados) {
+	    Scanner sc = new Scanner(System.in);
+	    String nombre;
+	    String simbolo;
+	    Double precioBase;
+
+	    System.out.println("Ingrese Nombre de la Criptomoneda: ");
+	    nombre = sc.nextLine();
+
+	    // Buscar si ya existe la criptomoneda
+	    Criptomoneda criptomonedaExistente = Criptomoneda.buscarCriptomonedaPorNombre(nombre, criptomonedas);
+
+	    if (criptomonedaExistente != null) {
+	        // Si la criptomoneda existe, ofrecer modificarla
+	        System.out.println("La criptomoneda ya existe, ¿Desea modificar algun parámetro? (S = sí, N = no):");
+	        String op = sc.nextLine();
+	        if (op.equalsIgnoreCase("s")) {
+	            System.out.println("Ingrese el nuevo nombre para " + nombre + ": ");
+	            nombre = sc.nextLine(); // Usar nextLine() para leer el nombre modificado
+	            System.out.println("Ingrese el nuevo simbolo: ");
+	            simbolo = sc.nextLine().toUpperCase(); // Usar nextLine() para leer el símbolo modificado
+	            System.out.println("Ingrese el nuevo precio base: ");
+	            precioBase = sc.nextDouble();
+
+	            // Crear una nueva instancia con los valores modificados
+	            Criptomoneda criptomonedaModificada = new Criptomoneda(nombre, simbolo, precioBase);
+
+	            // Reemplazar la criptomoneda existente en la lista
+	            int index = criptomonedas.indexOf(criptomonedaExistente);
+	            criptomonedas.set(index, criptomonedaModificada);
+
+	            System.out.println("Criptomoneda modificada exitosamente.");
+	        } else {
+	            System.out.println("Operación cancelada.");
+	        }
+	    } else {
+	        // Si la criptomoneda no existe, solicitar símbolo y precio base
+	        System.out.println("Ingrese Símbolo de la Criptomoneda: ");
+	        simbolo = sc.nextLine().toUpperCase();
+	        System.out.println("Ingrese Precio en Dólares de la Criptomoneda: ");
+	        precioBase = sc.nextDouble();
+
+	        // Crear nueva criptomoneda y agregarla a la lista
+	        Criptomoneda criptomoneda = new Criptomoneda(nombre, simbolo, precioBase);
+	        criptomonedas.add(criptomoneda);
+
+	        // Crear nuevo mercado y agregarlo a la lista de mercados
+	        Mercado mercado = new Mercado(simbolo);
+	        mercados.add(mercado);
+
+	        System.out.println("Criptomoneda creada exitosamente.");
+	    }
+
+	    sc.close();
+	}
+
+	
+	public static void modificarCriptomoneda(List<Criptomoneda> criptomonedas, List<Mercado> mercados) {
 	    Scanner sc = new Scanner(System.in);
 	    String nombre;
 	    String simbolo;
@@ -62,17 +81,11 @@ public class AdministracionAdministrador {
 	        System.out.println("Ingrese la Criptomoneda que desea modificar: ");
 	        nombre = sc.next();
 	        
-	        // Buscar la criptomoneda en la lista
-	        Criptomoneda criptomonedaExistente = null;
-	        for (Criptomoneda c : criptomonedas) {
-	            if (c.getNombre().equalsIgnoreCase(nombre)) {
-	                criptomonedaExistente = c;
-	                break;
-	            }
-	        }
-	        
+	        // Buscar la criptomoneda usando la función buscarCriptomonedaPorNombre
+	        Criptomoneda criptomonedaExistente = Criptomoneda.buscarCriptomonedaPorNombre(nombre, criptomonedas);
+	        Mercado mercadoExistente = Mercado.buscarMercadoPorSimbolo(criptomonedaExistente.getSimbolo(), mercados);
 	        // Si se encuentra la criptomoneda, modificarla
-	        if (criptomonedaExistente != null) {
+	        if (criptomonedaExistente != null && mercadoExistente != null) {
 	            System.out.println("Ingrese el nuevo nombre para " + nombre + ": ");
 	            nombre = sc.next();
 	            System.out.println("Ingrese el nuevo simbolo: ");
@@ -84,10 +97,14 @@ public class AdministracionAdministrador {
 	            Criptomoneda criptomonedaModificada = new Criptomoneda(nombre, simbolo, precioBase);
 	            
 	            // Reemplazar la criptomoneda existente en la lista
-	            int index = criptomonedas.indexOf(criptomonedaExistente);
-	            criptomonedas.set(index, criptomonedaModificada);
+	            int indexCripto = criptomonedas.indexOf(criptomonedaExistente);
+	            criptomonedas.set(indexCripto, criptomonedaModificada);
 	            
-	            System.out.println("Criptomoneda modificada exitosamente.");
+	            Mercado mercadoModificado = new Mercado(simbolo);
+	            int indexMercado = mercados.indexOf(mercadoExistente);
+	            mercados.set(indexMercado, mercadoModificado);
+	            
+	            System.out.println("Criptomoneda y Mercado modificados exitosamente.");
 	            break; // Salir del bucle al modificar correctamente
 	        } else {
 	            System.out.println("La criptomoneda no se encontró en la lista.");
@@ -101,6 +118,7 @@ public class AdministracionAdministrador {
 	    
 	    sc.close();
 	}
+
 
 	
 }

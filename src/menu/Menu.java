@@ -47,23 +47,27 @@ public class Menu {
 	}
 
 	public static void mostrarTraders(List<Trader> traders) {
+		System.out.println("Traders:");
 		for (Trader trader : traders) {
 			System.out.println(trader);
 		}
 	}
 
 	public static void mostrarAdministradores(List<Administrador> admin) {
+		System.out.println("Administradores:");
 		for (Administrador administrador : admin) {
 			System.out.println(administrador);
 		}
 	}
 	
 	public static void mostrarCriptomonedas(List<Criptomoneda> criptomonedas) {
+		System.out.println("Criptomonedas:");
 		for (Criptomoneda cripto: criptomonedas) {
 			System.out.println(cripto);
 		}
 	}
 	public static void mostrarMercado(List<Mercado> mercados) {
+		System.out.println("Mercados:");
 		for(Mercado mercado : mercados) {
 			System.out.println(mercado);
 		}
@@ -94,11 +98,12 @@ public class Menu {
 		case 2:
 			// modificarCriptomoneda();
 			System.out.println("Opción Modificar Criptomoneda seleccionada.");
-			AdministracionAdministrador.modificarCriptomoneda(criptomonedas);
+			AdministracionAdministrador.modificarCriptomoneda(criptomonedas, mercados);
 			break;
 		case 3:
 			// eliminarCriptomoneda();
 			System.out.println("Opción Eliminar Criptomoneda seleccionada.");
+			AdministracionAdministrador.eliminarCriptomoneda();
 			break;
 		case 4:
 			// consultarCriptomoneda();
@@ -117,6 +122,7 @@ public class Menu {
 			break;
 		}
 		mostrarCriptomonedas(criptomonedas);
+		mostrarMercado(mercados);
 		sc.close();
 	}
 

@@ -1,5 +1,7 @@
 package criptomonedas;
 
+import java.util.List;
+
 public class Mercado {
 	private String simbolo;
 	private Double capacidad;
@@ -53,10 +55,21 @@ public class Mercado {
 		this.variacion = variacion;
 	}
 	
+	public static Mercado buscarMercadoPorSimbolo(String simbolo, List<Mercado> mercados) {
+		Mercado mercadoExistente = null;
+        for (Mercado m : mercados) {
+            if (m.getSimbolo().equalsIgnoreCase(simbolo)) {
+            	mercadoExistente = m;
+                break;
+            }
+        }				
+		return mercadoExistente;
+	}
+	
 	@Override
 	public String toString() {
 		return "Simbolo: [" + simbolo +"], Capacidad: [" + capacidad + "], Volumen: [" + volumen 
-				+ "], Variación: [" + variacion;
+				+ "], Variación: [" + variacion + "]";
 	}
 	
 }
