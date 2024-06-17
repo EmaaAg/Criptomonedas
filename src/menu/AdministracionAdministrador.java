@@ -10,9 +10,44 @@ public class AdministracionAdministrador {
 	public static void administrador() {
 		
 	}
-	public static void eliminarCriptomoneda() {
-		
+	public static void eliminarCriptomoneda(List<Criptomoneda> criptomonedas, List<Mercado> mercados) {
+	    Scanner sc = new Scanner(System.in);
+	    String nombre;
+	    boolean encontrado = false;
+
+	    do {
+	        System.out.println("Ingrese Nombre de la Criptomoneda que desea eliminar: ");
+	        nombre = sc.nextLine();
+
+	        // Buscar la criptomoneda en la lista
+	        Criptomoneda criptomonedaExistente = Criptomoneda.buscarCriptomonedaPorNombre(nombre, criptomonedas);
+
+	        if (criptomonedaExistente != null) {
+	            // Eliminar la criptomoneda de la lista
+	            criptomonedas.remove(criptomonedaExistente);
+
+	            // Buscar el mercado asociado y eliminarlo de la lista de mercados
+	            Mercado mercadoAsociado = Mercado.buscarMercadoPorSimbolo(criptomonedaExistente.getSimbolo(), mercados);
+	            if (mercadoAsociado != null) {
+	                mercados.remove(mercadoAsociado);
+	            }
+
+	            System.out.println("Criptomoneda y mercado asociado eliminados exitosamente.");
+	            encontrado = true; // Se encontró y eliminó la criptomoneda, salir del bucle
+	        } else {
+	            System.out.println("La criptomoneda no se encontró en la lista.");
+	            System.out.println("¿Desea intentar de nuevo? (S/N)");
+	            String respuesta = sc.nextLine();
+	            if (!respuesta.equalsIgnoreCase("S")) {
+	                break; // Salir del bucle si no desea intentar de nuevo
+	            }
+	        }
+	    } while (!encontrado);
+
+	    sc.close();
 	}
+
+
 	
 	public static void crearCriptomoneda(List<Criptomoneda> criptomonedas, List<Mercado> mercados) {
 	    Scanner sc = new Scanner(System.in);

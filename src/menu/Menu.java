@@ -103,7 +103,7 @@ public class Menu {
 		case 3:
 			// eliminarCriptomoneda();
 			System.out.println("Opción Eliminar Criptomoneda seleccionada.");
-			AdministracionAdministrador.eliminarCriptomoneda();
+			AdministracionAdministrador.eliminarCriptomoneda(criptomonedas, mercados);
 			break;
 		case 4:
 			// consultarCriptomoneda();
