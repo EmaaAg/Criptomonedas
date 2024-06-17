@@ -1,8 +1,10 @@
 package archivos;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -93,5 +95,32 @@ public class Archivo {
             e.printStackTrace();
         }		
 	}
+	
+	public void guardarArchivoMercado(List<Mercado> mercados) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(nombreArchivo))) {
+            for (Mercado mercado : mercados) {
+                bw.write(mercado.getSimbolo() + ", ");
+                bw.write(mercado.getCapacidad() + ", ");
+                bw.write(mercado.getVolumen() + ", ");
+                bw.write(mercado.getVariacion() + "%\n");
+            }
+            System.out.println("Datos de mercado guardados exitosamente en " + nombreArchivo);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+	
+	public void guardarArchivoCriptomoneda(List<Criptomoneda> criptomonedas) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(nombreArchivo))) {
+            for (Criptomoneda criptomoneda : criptomonedas) {
+                bw.write(criptomoneda.getNombre() + ", ");
+                bw.write(criptomoneda.getSimbolo() + ", ");
+                bw.write(criptomoneda.getPrecioBase() + "\n");
+            }
+            System.out.println("Datos de criptomonedas guardados exitosamente en " + nombreArchivo);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 	
 }

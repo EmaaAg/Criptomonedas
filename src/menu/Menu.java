@@ -94,16 +94,25 @@ public class Menu {
 			// crearCriptomoneda();
 			System.out.println("Opción Crear Criptomoneda seleccionada.");
 			AdministracionAdministrador.crearCriptomoneda(criptomonedas, mercados);
+			
+			archivoMercado.guardarArchivoMercado(mercados);
+			archivoCripto.guardarArchivoCriptomoneda(criptomonedas);
 			break;
 		case 2:
 			// modificarCriptomoneda();
 			System.out.println("Opción Modificar Criptomoneda seleccionada.");
 			AdministracionAdministrador.modificarCriptomoneda(criptomonedas, mercados);
+			
+			archivoMercado.guardarArchivoMercado(mercados);
+			archivoCripto.guardarArchivoCriptomoneda(criptomonedas);
 			break;
 		case 3:
 			// eliminarCriptomoneda();
 			System.out.println("Opción Eliminar Criptomoneda seleccionada.");
 			AdministracionAdministrador.eliminarCriptomoneda(criptomonedas, mercados);
+			
+			archivoMercado.guardarArchivoMercado(mercados);
+			archivoCripto.guardarArchivoCriptomoneda(criptomonedas);
 			break;
 		case 4:
 			// consultarCriptomoneda();
