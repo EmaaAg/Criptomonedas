@@ -94,6 +94,7 @@ public class Menu {
 		case 2:
 			// modificarCriptomoneda();
 			System.out.println("Opción Modificar Criptomoneda seleccionada.");
+			AdministracionAdministrador.modificarCriptomoneda(criptomonedas);
 			break;
 		case 3:
 			// eliminarCriptomoneda();
@@ -178,8 +179,6 @@ public class Menu {
 				scanner.next();
 			}
 		} while (opcion > max || opcion < min);
-
-		// scanner.close();
 
 		return opcion;
 	}
