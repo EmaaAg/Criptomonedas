@@ -117,6 +117,8 @@ public class Menu {
 		case 4:
 			// consultarCriptomoneda();
 			System.out.println("Opción Consultar Criptomoneda seleccionada.");
+			mostrarCriptomonedas(criptomonedas);
+			AdministracionAdministrador.consultarCriptomoneda(criptomonedas, mercados);
 			break;
 		case 5:
 			// consultarEstadoMercado();
