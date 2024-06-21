@@ -3,6 +3,7 @@ package archivos;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -13,6 +14,7 @@ import java.util.Scanner;
 
 import criptomonedas.Administrador;
 import criptomonedas.Criptomoneda;
+import criptomonedas.Historico;
 import criptomonedas.Mercado;
 import criptomonedas.Trader;
 
@@ -96,6 +98,42 @@ public class Archivo {
         }		
 	}
 	
+	 public void cargarArchivoHistorico(List<Historico> historicos) {
+	        try (BufferedReader br = new BufferedReader(new FileReader(this.nombreArchivo))) {
+	            String linea;
+	            while ((linea = br.readLine()) != null) {
+	                String[] partes = linea.split(", ");
+	                String simbolo = partes[0];
+	                Double cantidad = Double.parseDouble(partes[1]);
+
+	                Historico historico = new Historico(simbolo, cantidad);
+	                historicos.add(historico);
+	            }
+	        } catch (FileNotFoundException e) {
+	            try (BufferedWriter bw = new BufferedWriter(new FileWriter(this.nombreArchivo))) {
+	                bw.write(""); 
+	            } catch (IOException ioException) {
+	                ioException.printStackTrace();
+	            }
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        } catch (NumberFormatException e) {
+	            e.printStackTrace();
+	        }
+	    }
+	 
+	 public void guardarArchivoHistorico(List<Historico> historicos) {
+	        try (BufferedWriter bw = new BufferedWriter(new FileWriter(nombreArchivo))) {
+	            for (Historico historico : historicos) {
+	                bw.write(historico.getSimbolo() + ", ");
+	                bw.write(historico.getCantidad() + "\n");
+	            }
+	            System.out.println("Datos de historico guardados exitosamente en " + nombreArchivo);
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	    }
+	 
 	public void guardarArchivoMercado(List<Mercado> mercados) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(nombreArchivo))) {
             for (Mercado mercado : mercados) {

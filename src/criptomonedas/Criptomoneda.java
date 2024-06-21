@@ -58,6 +58,18 @@ public class Criptomoneda {
         }				
 		return criptomonedaExistente;
 	}
+	
+	public static Criptomoneda buscarCriptomonedaPorSimbolo(String simbolo, List<Criptomoneda> criptomonedas) {
+		Criptomoneda criptomonedaExistente = null;
+        for (Criptomoneda c : criptomonedas) {
+            if (c.getSimbolo().equalsIgnoreCase(simbolo)) {
+                criptomonedaExistente = c;
+                break;
+            }
+        }				
+		return criptomonedaExistente;
+	}
+	
 	@Override
 	public String toString() {
 		return "Nombre: [" + nombre + "]" + ", Simbolo: [" + simbolo + "], Precio Base: [" + precioBase + "]." ;

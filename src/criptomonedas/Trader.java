@@ -66,6 +66,15 @@ public class Trader extends Usuario{
 				
 		return false;
 	}
+	
+	public static Trader buscarTraderPorNombre(String nombre, List<Trader> traders) {
+		for (Trader trader : traders) {
+			if(trader.getNombre().equals(nombre)) {
+				return trader;
+			}
+		}				
+		return null;
+	}
 
 	@Override
 	public String toString() {

@@ -113,6 +113,7 @@ public class AdministracionAdministrador {
 	    Criptomoneda criptomonedaExistente = Criptomoneda.buscarCriptomonedaPorNombre(nombre, criptomonedas);
 
 	    if (criptomonedaExistente != null) {
+	    	Mercado mercadoExistente = Mercado.buscarMercadoPorSimbolo(criptomonedaExistente.getSimbolo(), mercados);
 	        // Si la criptomoneda existe, ofrecer modificarla
 	        System.out.println("La criptomoneda ya existe, ¿Desea modificar algun parámetro? (S = sí, N = no):");
 	        String op = sc.nextLine();
@@ -131,7 +132,12 @@ public class AdministracionAdministrador {
 	            int index = criptomonedas.indexOf(criptomonedaExistente);
 	            criptomonedas.set(index, criptomonedaModificada);
 
-	            System.out.println("Criptomoneda modificada exitosamente.");
+	            Mercado mercadoModificado = new Mercado(simbolo, mercadoExistente.getCapacidad(), mercadoExistente.getVolumen(), mercadoExistente.getVariacion());
+	            int indexMercado = mercados.indexOf(mercadoExistente);
+	            mercados.set(indexMercado, mercadoModificado);
+	            
+	            System.out.println("Criptomoneda y Mercado modificados exitosamente.");
+	            
 	        } else {
 	            System.out.println("Operación cancelada.");
 	        }
@@ -186,7 +192,7 @@ public class AdministracionAdministrador {
 	            int indexCripto = criptomonedas.indexOf(criptomonedaExistente);
 	            criptomonedas.set(indexCripto, criptomonedaModificada);
 	            
-	            Mercado mercadoModificado = new Mercado(simbolo);
+	            Mercado mercadoModificado = new Mercado(simbolo, mercadoExistente.getCapacidad(), mercadoExistente.getVolumen(), mercadoExistente.getVariacion());
 	            int indexMercado = mercados.indexOf(mercadoExistente);
 	            mercados.set(indexMercado, mercadoModificado);
 	            
