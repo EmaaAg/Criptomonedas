@@ -2,7 +2,7 @@ package criptomonedas;
 
 import java.util.List;
 
-public class Historico {
+public class Historico implements Comparable<Historico>{
 	private String simbolo;
 	private Double cantidad;
 	
@@ -42,6 +42,11 @@ public class Historico {
 	@Override
 	public String toString() {
 		return "Simbolo: " + simbolo + " Cantidad: " + cantidad;
+	}
+	
+	@Override
+	public int compareTo(Historico otro) {		
+		return Double.compare(otro.getCantidad(), cantidad);
 	}
 		
 }

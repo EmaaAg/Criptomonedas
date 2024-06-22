@@ -11,8 +11,7 @@ public class AdministracionAdministrador {
 		
 	}
 	
-	public static void consultarCriptomoneda(List<Criptomoneda> criptomonedas, List<Mercado> mercados) {
-	    Scanner sc = new Scanner(System.in);
+	public static void consultarCriptomoneda(List<Criptomoneda> criptomonedas, List<Mercado> mercados, Scanner sc) {
 	    String respuesta;
 
 	    do {
@@ -55,14 +54,12 @@ public class AdministracionAdministrador {
 	        respuesta = sc.nextLine();
 	    } while (respuesta.equalsIgnoreCase("S"));
 
-	    sc.close();
 	    System.out.println("Consulta de criptomonedas finalizada.");
 	}
 
 
     
-	public static void eliminarCriptomoneda(List<Criptomoneda> criptomonedas, List<Mercado> mercados) {
-	    Scanner sc = new Scanner(System.in);
+	public static void eliminarCriptomoneda(List<Criptomoneda> criptomonedas, List<Mercado> mercados, Scanner sc) {
 	    String nombre;
 	    boolean encontrado = false;
 
@@ -94,14 +91,11 @@ public class AdministracionAdministrador {
 	            }
 	        }
 	    } while (!encontrado);
-
-	    sc.close();
 	}
 
 
 	
-	public static void crearCriptomoneda(List<Criptomoneda> criptomonedas, List<Mercado> mercados) {
-	    Scanner sc = new Scanner(System.in);
+	public static void crearCriptomoneda(List<Criptomoneda> criptomonedas, List<Mercado> mercados, Scanner sc) {
 	    String nombre;
 	    String simbolo;
 	    Double precioBase;
@@ -158,13 +152,10 @@ public class AdministracionAdministrador {
 
 	        System.out.println("Criptomoneda creada exitosamente.");
 	    }
-
-	    sc.close();
 	}
 
 	
-	public static void modificarCriptomoneda(List<Criptomoneda> criptomonedas, List<Mercado> mercados) {
-	    Scanner sc = new Scanner(System.in);
+	public static void modificarCriptomoneda(List<Criptomoneda> criptomonedas, List<Mercado> mercados, Scanner sc) {
 	    String nombre;
 	    String simbolo;
 	    Double precioBase;
@@ -208,7 +199,6 @@ public class AdministracionAdministrador {
 	        }
 	    } while (true); // Repetir hasta que se encuentre la criptomoneda o el usuario decida no continuar
 	    
-	    sc.close();
 	}
 
 
