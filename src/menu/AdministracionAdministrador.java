@@ -16,16 +16,16 @@ public class AdministracionAdministrador {
 
 	    do {
 	        System.out.println("Ingrese el nombre o símbolo de la criptomoneda que desea consultar: ");
-	        String consulta = sc.nextLine().toUpperCase();
+	        String consulta = sc.next().toUpperCase();
 
 	        boolean encontrada = false;
 
 	        for (Criptomoneda criptomoneda : criptomonedas) {
 	            if (criptomoneda.getNombre().equalsIgnoreCase(consulta) || criptomoneda.getSimbolo().equalsIgnoreCase(consulta)) {
-	                System.out.println("Nombre: " + criptomoneda.getNombre() +
+	                System.out.println("\nNombre: " + criptomoneda.getNombre() +
 	                                   " Símbolo: " + criptomoneda.getSimbolo() +
 	                                   " Precio en dólares: " + String.format("%,.1f", criptomoneda.getPrecioBase()));
-	                System.out.println("Datos del mercado:");
+	                System.out.println("\nDatos del mercado:");
 	                
 	                System.out.printf("%-20s%-20s%-20s%n", "Capacidad", "Volumen", "Variación");
 	                
@@ -50,8 +50,8 @@ public class AdministracionAdministrador {
 	            System.out.println("La criptomoneda especificada no fue encontrada.");
 	        }
 
-	        System.out.println("¿Desea consultar otra criptomoneda? (S/N)");
-	        respuesta = sc.nextLine();
+	        System.out.println("\n¿Desea consultar otra criptomoneda? (S/N)");
+	        respuesta = sc.next();
 	    } while (respuesta.equalsIgnoreCase("S"));
 
 	    System.out.println("Consulta de criptomonedas finalizada.");
@@ -65,7 +65,7 @@ public class AdministracionAdministrador {
 
 	    do {
 	        System.out.println("Ingrese Nombre de la Criptomoneda que desea eliminar: ");
-	        nombre = sc.nextLine();
+	        nombre = sc.next();
 
 	        // Buscar la criptomoneda en la lista
 	        Criptomoneda criptomonedaExistente = Criptomoneda.buscarCriptomonedaPorNombre(nombre, criptomonedas);
@@ -85,7 +85,7 @@ public class AdministracionAdministrador {
 	        } else {
 	            System.out.println("La criptomoneda no se encontró en la lista.");
 	            System.out.println("¿Desea intentar de nuevo? (S/N)");
-	            String respuesta = sc.nextLine();
+	            String respuesta = sc.next();
 	            if (!respuesta.equalsIgnoreCase("S")) {
 	                break; // Salir del bucle si no desea intentar de nuevo
 	            }
@@ -101,7 +101,7 @@ public class AdministracionAdministrador {
 	    Double precioBase;
 
 	    System.out.println("Ingrese Nombre de la Criptomoneda: ");
-	    nombre = sc.nextLine();
+	    nombre = sc.next();
 
 	    // Buscar si ya existe la criptomoneda
 	    Criptomoneda criptomonedaExistente = Criptomoneda.buscarCriptomonedaPorNombre(nombre, criptomonedas);
@@ -110,12 +110,12 @@ public class AdministracionAdministrador {
 	    	Mercado mercadoExistente = Mercado.buscarMercadoPorSimbolo(criptomonedaExistente.getSimbolo(), mercados);
 	        // Si la criptomoneda existe, ofrecer modificarla
 	        System.out.println("La criptomoneda ya existe, ¿Desea modificar algun parámetro? (S = sí, N = no):");
-	        String op = sc.nextLine();
+	        String op = sc.next();
 	        if (op.equalsIgnoreCase("s")) {
 	            System.out.println("Ingrese el nuevo nombre para " + nombre + ": ");
-	            nombre = sc.nextLine(); // Usar nextLine() para leer el nombre modificado
+	            nombre = sc.next(); // Usar nextLine() para leer el nombre modificado
 	            System.out.println("Ingrese el nuevo simbolo: ");
-	            simbolo = sc.nextLine().toUpperCase(); // Usar nextLine() para leer el símbolo modificado
+	            simbolo = sc.next().toUpperCase(); // Usar nextLine() para leer el símbolo modificado
 	            System.out.println("Ingrese el nuevo precio base: ");
 	            precioBase = sc.nextDouble();
 
@@ -138,7 +138,7 @@ public class AdministracionAdministrador {
 	    } else {
 	        // Si la criptomoneda no existe, solicitar símbolo y precio base
 	        System.out.println("Ingrese Símbolo de la Criptomoneda: ");
-	        simbolo = sc.nextLine().toUpperCase();
+	        simbolo = sc.next().toUpperCase();
 	        System.out.println("Ingrese Precio en Dólares de la Criptomoneda: ");
 	        precioBase = sc.nextDouble();
 

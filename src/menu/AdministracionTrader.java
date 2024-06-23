@@ -42,16 +42,16 @@ public class AdministracionTrader {
 
 	    do {
 	        System.out.println("Ingrese el nombre o símbolo de la criptomoneda que desea consultar: ");
-	        String consulta = sc.nextLine().toUpperCase();
+	        String consulta = sc.next().toUpperCase();
 
 	        boolean encontrada = false;
 
 	        for (Criptomoneda criptomoneda : criptomonedas) {
 	            if (criptomoneda.getNombre().equalsIgnoreCase(consulta) || criptomoneda.getSimbolo().equalsIgnoreCase(consulta)) {
-	                System.out.println("Nombre: " + criptomoneda.getNombre() +
+	                System.out.println("\nNombre: " + criptomoneda.getNombre() +
 	                                   " Símbolo: " + criptomoneda.getSimbolo() +
 	                                   " Precio en dólares: " + String.format("%,.1f", criptomoneda.getPrecioBase()));
-	                System.out.println("Datos del mercado:");
+	                System.out.println("\nDatos del mercado:");
 	                
 	                System.out.printf("%-20s%-20s%-20s%n", "Capacidad", "Volumen", "Variación");
 	                
@@ -76,8 +76,8 @@ public class AdministracionTrader {
 	            System.out.println("La criptomoneda especificada no fue encontrada.");
 	        }
 
-	        System.out.println("¿Desea consultar otra criptomoneda? (S/N)");
-	        respuesta = sc.nextLine();
+	        System.out.println("\n¿Desea consultar otra criptomoneda? (S/N)");
+	        respuesta = sc.next();
 	    } while (respuesta.equalsIgnoreCase("S"));
 
 	    System.out.println("Consulta de criptomonedas finalizada.");

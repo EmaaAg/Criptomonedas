@@ -38,9 +38,12 @@ public class Menu {
 			} else {
 				// crearTrader
 				crearTrader(traders, sc, nombre);
+				menuTrader(nombre, traders);
 				// AdministracionTrader.crearTrader(traders, sc, nombre);
 			}
 		}
+		Archivo archivoUsuario = new Archivo("usuarios.csv");
+		archivoUsuario.guardarArchivoUsuario(admin, traders);
 		mostrarTraders(traders);
 
 		// Si no esta en ninguna crear un nuevo trader
@@ -105,7 +108,7 @@ public class Menu {
 		List<Criptomoneda> criptomonedas = new ArrayList<Criptomoneda>();
 		List<Mercado> mercados = new ArrayList<Mercado>();
 
-		String mensaje = "1) Crear Criptomoneda.\n" + "2) Modificar Criptomoneda.\n" + "3) Eliminar Criptomoneda.\n"
+		String mensaje = "\n1) Crear Criptomoneda.\n" + "2) Modificar Criptomoneda.\n" + "3) Eliminar Criptomoneda.\n"
 				+ "4) Consultar Criptomoneda.\n" + "5) Consultar estado actual del mercado.\n" + "6) Salir.\n";
 		Scanner sc = new Scanner(System.in);
 		int opcion = obtenerOpcion(mensaje, 1, 6, sc);
@@ -121,7 +124,7 @@ public class Menu {
 			switch (opcion) {
 			case 1:
 				// crearCriptomoneda();
-				System.out.println("Opción Crear Criptomoneda seleccionada.");
+				System.out.println("\nOpción Crear Criptomoneda seleccionada.");
 				AdministracionAdministrador.crearCriptomoneda(criptomonedas, mercados, sc);
 
 				archivoMercado.guardarArchivoMercado(mercados);
@@ -129,7 +132,7 @@ public class Menu {
 				break;
 			case 2:
 				// modificarCriptomoneda();
-				System.out.println("Opción Modificar Criptomoneda seleccionada.");
+				System.out.println("\nOpción Modificar Criptomoneda seleccionada.");
 				AdministracionAdministrador.modificarCriptomoneda(criptomonedas, mercados, sc);
 
 				archivoMercado.guardarArchivoMercado(mercados);
@@ -137,7 +140,7 @@ public class Menu {
 				break;
 			case 3:
 				// eliminarCriptomoneda();
-				System.out.println("Opción Eliminar Criptomoneda seleccionada.");
+				System.out.println("\nOpción Eliminar Criptomoneda seleccionada.");
 				AdministracionAdministrador.eliminarCriptomoneda(criptomonedas, mercados, sc);
 
 				archivoMercado.guardarArchivoMercado(mercados);
@@ -145,16 +148,16 @@ public class Menu {
 				break;
 			case 4:
 				// consultarCriptomoneda();
-				System.out.println("Opción Consultar Criptomoneda seleccionada.");
+				System.out.println("\nOpción Consultar Criptomoneda seleccionada.");
 				mostrarCriptomonedas(criptomonedas);
 				AdministracionAdministrador.consultarCriptomoneda(criptomonedas, mercados, sc);
 				break;
 			case 5:
+				System.out.println("\nOpción Consultar estado actual del mercado seleccionada.");
 				mostrarMercado(mercados);
-				System.out.println("Opción Consultar estado actual del mercado seleccionada.");
 				break;
 			case 6:
-				System.out.println("Saliendo del programa.");
+				System.out.println("\nSaliendo del programa.");
 				System.exit(0);
 				break;
 			default:
@@ -171,7 +174,7 @@ public class Menu {
 
 	public static void menuTrader(String nombre, List<Trader> traders) {
 
-		String mensaje = "1) Comprar Criptomonedas.\n" + "2) Vender Criptomonedas.\n" + "3) Consultar Criptomoneda.\n"
+		String mensaje = "\n1) Comprar Criptomonedas.\n" + "2) Vender Criptomonedas.\n" + "3) Consultar Criptomoneda.\n"
 				+ "4) Recomendar Criptomonedas.\n" + "5) Consultar estado actual del mercado.\n"
 				+ "6) Visualizar archivo de transacciones (histórico).\n" + "7) Salir.\n";
 		Scanner sc = new Scanner(System.in);
@@ -197,40 +200,40 @@ public class Menu {
 			case 1:
 				// comprarCriptomoneda();
 
-				System.out.println("Opción Comprar Criptomoneda seleccionada.");
+				System.out.println("\nOpción Comprar Criptomoneda seleccionada.");
 				AdministracionTrader.comprarCriptomonedas(criptomonedas, mercados, nombre, traders, historicos, sc);
 				archivoHistorico.guardarArchivoHistorico(historicos);
 				archivoMercado.guardarArchivoMercado(mercados);
 				break;
 			case 2:
 				// venderCriptomoneda();
-				System.out.println("Opción Vender Criptomoneda seleccionada.");
+				System.out.println("\nOpción Vender Criptomoneda seleccionada.");
 				AdministracionTrader.venderCriptomonedas(criptomonedas, mercados, nombre, traders, historicos, sc);
 				archivoHistorico.guardarArchivoHistorico(historicos);
 				archivoMercado.guardarArchivoMercado(mercados);
 				break;
 			case 3:
 				// consultarCriptomoneda();
-				System.out.println("Opción Consultar Criptomoneda seleccionada.");
+				System.out.println("\nOpción Consultar Criptomoneda seleccionada.");
 				AdministracionTrader.consultarCriptomoneda(criptomonedas, mercados, sc);
 				break;
 			case 4:
 				// recomendarCriptomoneda();
-				System.out.println("Opción Recomendar Criptomoneda seleccionada.");
+				System.out.println("\nOpción Recomendar Criptomoneda seleccionada.");
 				AdministracionTrader.recomendarCriptomoneda(criptomonedas, mercados);
 				break;
 			case 5:
 				// consultarEstadoMercado();
-				System.out.println("Opción Consultar estado actual del mercado seleccionada.");
+				System.out.println("\nOpción Consultar estado actual del mercado seleccionada.");
 				mostrarMercado(mercados);
 				break;
 			case 6:
 				// archivoTransacciones();
-				System.out.println("Opción Visualizar archivo Transacciones.");
+				System.out.println("\nOpción Visualizar archivo Transacciones seleccionada.");
 				AdministracionTrader.visualizarTransacciones(historicos);
 				break;
 			case 7:
-				System.out.println("Saliendo del programa.");
+				System.out.println("\nSaliendo del programa.");
 				System.exit(0);
 				break;
 			default:

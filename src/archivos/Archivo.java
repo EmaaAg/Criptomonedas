@@ -17,6 +17,7 @@ import criptomonedas.Criptomoneda;
 import criptomonedas.Historico;
 import criptomonedas.Mercado;
 import criptomonedas.Trader;
+import criptomonedas.Usuario;
 
 public class Archivo {
 	private String nombreArchivo;
@@ -139,7 +140,7 @@ public class Archivo {
             for (Mercado mercado : mercados) {
                 bw.write(mercado.getSimbolo() + ", ");
                 bw.write(mercado.getCapacidad() + ", ");
-                bw.write(mercado.getVolumen() + ", ");
+                bw.write(mercado.getVolumen() + "%, ");
                 bw.write(mercado.getVariacion() + "%\n");
             }
             System.out.println("Datos de mercado guardados exitosamente en " + nombreArchivo);
@@ -161,4 +162,21 @@ public class Archivo {
         }
     }
 	
+	public void guardarArchivoUsuario(List<Administrador> administradores, List<Trader> traders) {
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(nombreArchivo))) {
+			for(Administrador administrador: administradores) {
+				bw.write(administrador.getNombre() + ", ");
+				bw.write(administrador.getPerfil() + "\n");
+			}
+			for(Trader trader: traders) {
+				bw.write(trader.getNombre() + ", ");
+				bw.write(trader.getNumeroDeCuenta() + ", ");
+				bw.write(trader.getNombreDeBanco() + ", ");
+				bw.write(trader.getSaldoActual() + "\n");
+			}
+			System.out.println("Datos de usuarios guardados exitosamente en " + nombreArchivo);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }
