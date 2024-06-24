@@ -69,7 +69,7 @@ public class Mercado {
 	@Override
 	public String toString() {
 		return "Simbolo: [" + simbolo +"], Capacidad: [" + capacidad + "], Volumen: [" + volumen 
-				+ "%], Variación: [" + variacion + "%]";
+				+ "%], Variación: [+" + variacion + "%]";
 	}
 	
 }
