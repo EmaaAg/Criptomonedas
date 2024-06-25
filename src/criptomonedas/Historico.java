@@ -41,7 +41,7 @@ public class Historico implements Comparable<Historico>{
 	
 	@Override
 	public String toString() {
-		return "Simbolo: " + simbolo + " Cantidad: " + cantidad;
+		return "Simbolo: [" + simbolo + "], Cantidad: [" + cantidad + "].";
 	}
 	
 	@Override

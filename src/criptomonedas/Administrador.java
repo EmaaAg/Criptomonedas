@@ -39,6 +39,6 @@ public class Administrador extends Usuario{
 
 	@Override
 	public String toString() {
-		return "Nombre: " + getNombre() + " Perfil:" + perfil;
+		return "Nombre: [" + getNombre() + "], Perfil: [" + perfil + "].";
 	}
 }

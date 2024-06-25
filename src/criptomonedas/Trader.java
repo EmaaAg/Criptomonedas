@@ -15,15 +15,7 @@ public class Trader extends Usuario{
 		this.nombreDeBanco = nombreDeBanco;
 		this.saldoActual = saldoActual;
 	}
-    
-//	public Trader(String nombre, String numeroDeCuenta, String nombreDeBanco, Double saldoActual, List<Trader> traders) {
-//		super(nombre);
-//		this.numeroDeCuenta = numeroDeCuenta;
-//		this.nombreDeBanco = nombreDeBanco;
-//		this.saldoActual = saldoActual;
-//		this.traders = traders;
-//	}
-	
+    	
 	
 	public String getNumeroDeCuenta() {
 		return numeroDeCuenta;
@@ -78,8 +70,9 @@ public class Trader extends Usuario{
 
 	@Override
 	public String toString() {
-		return "Nombre: "+ getNombre() + ", Numero De Cuenta:" + numeroDeCuenta + ", Nombre De Banco: " + nombreDeBanco + ", saldoActual="
-				+ saldoActual;
+		return "Nombre: ["+ getNombre() + "], Numero De Cuenta: [" + numeroDeCuenta + "], Nombre De Banco: [" 
+	+ nombreDeBanco + "], saldoActual: ["
+				+ saldoActual + "].";
 	}
 	
 	
