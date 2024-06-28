@@ -42,6 +42,11 @@ public class AdministracionTrader extends AdministracionUsuario {
 		String simbolo;
 		Double cantidadAVender;
 		
+		if(historicos.isEmpty()) {
+			System.out.println("Usted no posee criptomonedas para vender.");
+			return;
+		}
+		
 		System.out.println("Ingrese el símbolo a Buscar: ");
 		simbolo = sc.next();
 		
@@ -132,7 +137,6 @@ public class AdministracionTrader extends AdministracionUsuario {
             int indexHistorico = historicos.indexOf(historico);
             historicos.set(indexHistorico, historicoModificado);
 		}
-		
 	}
-
+	
 }
