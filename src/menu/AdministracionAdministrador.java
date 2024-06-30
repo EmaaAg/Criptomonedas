@@ -116,29 +116,31 @@ public class AdministracionAdministrador extends AdministracionUsuario {
 	        
 	        // Buscar la criptomoneda usando la función buscarCriptomonedaPorNombre
 	        Criptomoneda criptomonedaExistente = Criptomoneda.buscarCriptomonedaPorNombre(nombre, criptomonedas);
-	        Mercado mercadoExistente = Mercado.buscarMercadoPorSimbolo(criptomonedaExistente.getSimbolo(), mercados);
 	        // Si se encuentra la criptomoneda, modificarla
-	        if (criptomonedaExistente != null && mercadoExistente != null) {
-	            System.out.println("Ingrese el nuevo nombre para " + nombre + ": ");
-	            nombre = sc.next();
-	            System.out.println("Ingrese el nuevo simbolo: ");
-	            simbolo = sc.next();
-	            System.out.println("Ingrese el nuevo precio base: ");
-	            precioBase = sc.nextDouble();
-	            
-	            // Crear una nueva instancia con los valores modificados
-	            Criptomoneda criptomonedaModificada = new Criptomoneda(nombre, simbolo, precioBase);
-	            
-	            // Reemplazar la criptomoneda existente en la lista
-	            int indexCripto = criptomonedas.indexOf(criptomonedaExistente);
-	            criptomonedas.set(indexCripto, criptomonedaModificada);
-	            
-	            Mercado mercadoModificado = new Mercado(simbolo, mercadoExistente.getCapacidad(), mercadoExistente.getVolumen(), mercadoExistente.getVariacion());
-	            int indexMercado = mercados.indexOf(mercadoExistente);
-	            mercados.set(indexMercado, mercadoModificado);
-	            
-	            System.out.println("Criptomoneda y Mercado modificados exitosamente.");
-	            break; // Salir del bucle al modificar correctamente
+	        if (criptomonedaExistente != null) {
+	        	Mercado mercadoExistente = Mercado.buscarMercadoPorSimbolo(criptomonedaExistente.getSimbolo(), mercados);	        	
+	        	if(criptomonedaExistente != null) {
+	        		System.out.println("Ingrese el nuevo nombre para " + nombre + ": ");
+	        		nombre = sc.next();
+	        		System.out.println("Ingrese el nuevo simbolo: ");
+	        		simbolo = sc.next();
+	        		System.out.println("Ingrese el nuevo precio base: ");
+	        		precioBase = sc.nextDouble();
+	        		
+	        		// Crear una nueva instancia con los valores modificados
+	        		Criptomoneda criptomonedaModificada = new Criptomoneda(nombre, simbolo, precioBase);
+	        		
+	        		// Reemplazar la criptomoneda existente en la lista
+	        		int indexCripto = criptomonedas.indexOf(criptomonedaExistente);
+	        		criptomonedas.set(indexCripto, criptomonedaModificada);
+	        		
+	        		Mercado mercadoModificado = new Mercado(simbolo, mercadoExistente.getCapacidad(), mercadoExistente.getVolumen(), mercadoExistente.getVariacion());
+	        		int indexMercado = mercados.indexOf(mercadoExistente);
+	        		mercados.set(indexMercado, mercadoModificado);
+	        		
+	        		System.out.println("Criptomoneda y Mercado modificados exitosamente.");
+	        		break; // Salir del bucle al modificar correctamente
+	        	}
 	        } else {
 	            System.out.println("La criptomoneda no se encontró en la lista.");
 	            System.out.println("¿Desea intentar de nuevo? (S/N)");

@@ -36,9 +36,14 @@ public class Menu {
 			if (criptomonedas.Trader.buscarTrader(nombre, traders)) {
 				menuTrader(nombre, traders);
 			} else {
-				// crearTrader
-				crearTrader(traders, sc, nombre);
-				menuTrader(nombre, traders);
+				System.out.println("Usuario no encontrado");
+				System.out.println("¿Desea crear un usuario Trader con el nombre ingresado? (S/N)");
+				String respuesta = sc.next();
+				if(respuesta.equalsIgnoreCase("S")) {
+					// crearTrader
+					crearTrader(traders, sc, nombre);
+					menuTrader(nombre, traders);					
+				}
 				// AdministracionTrader.crearTrader(traders, sc, nombre);
 			}
 			Archivo archivoUsuario = new Archivo("usuarios.csv");
@@ -50,10 +55,10 @@ public class Menu {
 
 	private static void crearTrader(List<Trader> traders, Scanner sc, String nombre) {
 		System.out.println("Ingrese Numero de cuenta bancaria: ");
-		String numeroDeCuenta = sc.nextLine();
+		String numeroDeCuenta = sc.next();
 
 		System.out.println("Ingrese nombre de Banco: ");
-		String nombreDeBanco = sc.nextLine();
+		String nombreDeBanco = sc.next();
 		Double saldo;
 
 		do {

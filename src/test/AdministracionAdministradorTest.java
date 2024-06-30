@@ -47,7 +47,7 @@ public class AdministracionAdministradorTest {
 
     @Test
     public void testCrearCriptomonedaNueva() {
-        String input = "Ethereum\nETH\n2000,0\n";
+        String input = "Ethereum\nETH\n2000.0\n";
         Scanner sc = new Scanner(input);
         AdministracionAdministrador.crearCriptomoneda(criptomonedas, mercados, sc);
         sc.close();
@@ -58,7 +58,7 @@ public class AdministracionAdministradorTest {
 
     @Test
     public void testModificarCriptomonedaExistente() {
-        String input = "Bitcoin\nS\nBitcoinModificado\nBTCM\n35000,0\n";
+        String input = "Bitcoin\nS\nBitcoinMod\nBTCM\n35000.0\n";
         Scanner sc = new Scanner(input);
         AdministracionAdministrador.crearCriptomoneda(criptomonedas, mercados, sc);
         sc.close();
